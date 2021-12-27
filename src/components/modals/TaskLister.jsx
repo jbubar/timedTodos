@@ -2,7 +2,12 @@ import { useState } from 'react';
 
 export default function TaskLister() {
    
-    const [disabled, setDisabled] = useState(false)
+    const [tasks, setTasks] = useState([
+        "take a walk",
+        "get a snack",
+        "solve global climate change",
+        "call the folks",
+    ])
   
 
 
@@ -12,8 +17,10 @@ export default function TaskLister() {
             <p>What Tasks Would You Like To Accomplish?</p>
 
             {/*List Widget Goes Here*/}
-
-            <button id="proceed" disabled={disabled}>Next</button>
+            {tasks.map((task, i) => (
+                <div key={`${i}`}>{task}</div>
+            ))}
+            <button id="proceed" disabled={tasks.length === 0}>Next</button>
     
         </div>
     )
